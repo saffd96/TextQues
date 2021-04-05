@@ -8,6 +8,8 @@ public class Step : MonoBehaviour
     [TextArea(15, 50)]
     public string contentText;
 
+    public string locationText;
+
     public Step[] nextSteps;
 
     #endregion

@@ -9,8 +9,11 @@ public class TextQuest : MonoBehaviour
     #region Variables
 
     public Text contentLabel;
+    public Text locationLabel;
+
     public Step startStep;
 
+    [SerializeField]
     private Step currentStep;
 
     #endregion
@@ -50,6 +53,8 @@ public class TextQuest : MonoBehaviour
     private void UpdateContentLabel()
     {
         contentLabel.text = currentStep.contentText;
+        locationLabel.text = currentStep.locationText;
+
     }
 
     private void MoveToNextStep(int stepIndex)
