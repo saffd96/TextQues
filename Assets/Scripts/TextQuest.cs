@@ -29,7 +29,7 @@ public class TextQuest : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) //начало игры
+        if (Input.GetKeyDown(KeyCode.Space) && isGameStarted == false) //начало игры
         {
             isGameStarted = true;
             MoveToNextStep(0);
