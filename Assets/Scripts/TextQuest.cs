@@ -12,6 +12,9 @@ public class TextQuest : MonoBehaviour
     public Text locationLabel;
 
     [SerializeField]
+    private Image bgImage;
+
+    [SerializeField]
     private Step startStep;
     private Step currentStep;
 
@@ -26,7 +29,7 @@ public class TextQuest : MonoBehaviour
         currentStep = startStep;
         UpdateContentLabel();
     }
-    
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGameStarted == false) //начало игры
@@ -34,19 +37,19 @@ public class TextQuest : MonoBehaviour
             isGameStarted = true;
             MoveToNextStep(0);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1) && isGameStarted == true)
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1) && isGameStarted == true)
         {
             MoveToNextStep(0);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2) && isGameStarted == true)
+        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2) && isGameStarted == true)
         {
             MoveToNextStep(1);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3) && isGameStarted == true)
+        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3) && isGameStarted == true)
         {
             MoveToNextStep(2);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha4) && isGameStarted == true)
+        if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4) && isGameStarted == true)
         {
             MoveToNextStep(3);
         }
@@ -63,6 +66,7 @@ public class TextQuest : MonoBehaviour
     {
         contentLabel.text = currentStep.contentText;
         locationLabel.text = currentStep.locationText;
+        bgImage.sprite = currentStep.sprite;
     }
 
     private void MoveToNextStep(int stepIndex)
