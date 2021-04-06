@@ -11,10 +11,12 @@ public class TextQuest : MonoBehaviour
     public Text contentLabel;
     public Text locationLabel;
 
-    public Step startStep;
-
     [SerializeField]
+    private Step startStep;
     private Step currentStep;
+
+    private bool isGameStarted = false;
+
 
     #endregion
 
@@ -24,28 +26,35 @@ public class TextQuest : MonoBehaviour
         currentStep = startStep;
         UpdateContentLabel();
     }
-
+    
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Space)) //начало игры
+        {
+            isGameStarted = true;
+            MoveToNextStep(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1) && isGameStarted == true)
         {
             MoveToNextStep(0);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) && isGameStarted == true)
         {
             MoveToNextStep(1);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3) && isGameStarted == true)
         {
             MoveToNextStep(2);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+        if (Input.GetKeyDown(KeyCode.Alpha4) && isGameStarted == true)
         {
             MoveToNextStep(3);
         }
     }
     #endregion
+
     #region Public methods
+
     #endregion
 
     #region Private methods
@@ -54,7 +63,6 @@ public class TextQuest : MonoBehaviour
     {
         contentLabel.text = currentStep.contentText;
         locationLabel.text = currentStep.locationText;
-
     }
 
     private void MoveToNextStep(int stepIndex)
