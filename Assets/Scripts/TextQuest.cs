@@ -22,8 +22,8 @@ public class TextQuest : MonoBehaviour
 
     private bool isGameStarted = false;
 
-    // private Color notTransparent = new Color(1, 1, 1, 1);
-    //  private Color transparent = new Color(1, 1, 1, 0);
+    private Color notTransparent = new Color(1, 1, 1, 1);
+    private Color transparent = new Color(1, 1, 1, 0);
 
     #endregion
 
@@ -58,6 +58,7 @@ public class TextQuest : MonoBehaviour
             MoveToNextStep(3);
         }
     }
+
     #endregion
 
     #region Public methods
@@ -70,16 +71,15 @@ public class TextQuest : MonoBehaviour
     {
         contentLabel.text = currentStep.contentText;
         locationLabel.text = currentStep.locationText;
-        //Никита, памаги((((((
-        //if (!bgImage.sprite)
-        //{
-        //    bgImage.color = transparent;
-        //}
-        //else
-        //{
-        //    bgImage.color = notTransparent;
         bgImage.sprite = currentStep.sprite;
-        //}
+        if (bgImage.sprite==null)
+        {
+            bgImage.color = transparent;
+        }
+        else
+        {
+            bgImage.color = notTransparent;
+        }
     }
 
     private void MoveToNextStep(int stepIndex)
@@ -90,5 +90,6 @@ public class TextQuest : MonoBehaviour
             UpdateContentLabel();
         }
     }
+
     #endregion
 }
